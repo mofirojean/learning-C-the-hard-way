@@ -3,40 +3,42 @@
 
 int main()
 {
-	FILE *fptr1, *fptr2;
+	FILE *file_1, *file_2;
 	char filename[100], c;
 
-	printf("Enter file name to open for reading:");
+	printf("Enter name of source file: ");
 	scanf("%s", filename);
 
 	// open the file for reading
-	fptr1 = fopen(filename, "r");
-	if (fptr1 == NULL) {
+	file_1 = fopen(filename, "r");
+	if (file_1 == NULL) {
+		fclose(file_1);
 		printf("\nCannot open file %s. \n", filename);
 		exit(0);
 	}
 
-	printf("\nEnter file name to open for writing:");
+	printf("\nEnter name of target file: ");
 	scanf("%s", filename);
 
 	// open another file for writing
-	fptr2 = fopen(filename, "w");
-	if (fptr2 == NULL) { 
+	file_2 = fopen(filename, "w");
+	if (file_2 == NULL) {
+		fclose(file_2);
                 printf("\nCannot open file %s. \n", filename);
                 exit(0);
         }
 	
 	// read the content from one file to another
-	c = fgetc(fptr1);
+	c = fgetc(file_1);
 	while (c != EOF) {
-		fputc(c, fptr2);
-		c = fgetc(fptr1);
+		fputc(c, file_2);
+		c = fgetc(file_1);
 	}
 
 	printf("\nSuccessful Copy Of Contents to %s.\n", filename);
 
-	fclose(fptr1);
-	fclose(fptr2);
+	fclose(file_1);
+	fclose(file_2);
 	
 	return 0;
 }
