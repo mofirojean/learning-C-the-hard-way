@@ -1,4 +1,5 @@
 CFLAGS=-Wall -g
 
 clean:
-	rm -f ex11
+	rm -f ex14
+
