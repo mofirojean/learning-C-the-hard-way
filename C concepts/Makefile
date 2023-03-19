@@ -1,5 +1,5 @@
 CFLAGS=-Wall -g
 
 clean:
-	rm -f memory_calloc
+	rm -f memory_realloc
 
